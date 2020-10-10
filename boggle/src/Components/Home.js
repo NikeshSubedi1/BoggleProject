@@ -6,7 +6,7 @@ function Home() {
   return (
     <Link to="/Boggle">
       <Button color="primary" variant="contained">
-        Play
+        Start
       </Button>
     </Link>
   );

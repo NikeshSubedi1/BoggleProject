@@ -20,8 +20,9 @@ function WordSubmission(props) {
   const textField = useRef(null);
   const [wordValue, setWordValue] = useState("");
 
-  const submit = () => {
+  const submit = (e) => {
     props.checkWord(wordValue.toLowerCase());
+    e.preventDefault();
     setWordValue("");
   };
   const handleOnChange = (e) => {
@@ -36,19 +37,26 @@ function WordSubmission(props) {
 
   return (
     <div className={classes.root}>
-      <TextField
-        ref={textField}
-        label="Word"
-        value={wordValue}
-        onChange={handleOnChange}
-        autoFocus
-      />
-      <Button variant="contained" color="secondary" onClick={submit}>
-        Submit
-      </Button>
-      <Button variant="contained" color="default" onClick={submit}>
-        Stop
-      </Button>
+      <form onSubmit={submit}>
+        <TextField
+          ref={textField}
+          label="Word"
+          value={wordValue}
+          onChange={handleOnChange}
+          autoFocus
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          color="secondary"
+          onClick={submit}
+        >
+          Submit
+        </Button>
+        <Button variant="contained" color="default" onClick={props.onStop}>
+          Stop
+        </Button>
+      </form>
     </div>
   );
 }

@@ -1,14 +1,37 @@
-import { Button } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    height: "500px",
+    position: "relative",
+  },
+
+  center: {
+    margin: 0,
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    "-ms-transform": "translate(-50%, -50%)",
+    transform: "translate(-50%, -50%)",
+  },
+}));
 
 function Home() {
+  const history = useHistory();
+  const startBoggle = () => {
+    history.push(`/Boggle`);
+  };
+  const classes = useStyles();
   return (
-    <Link to="/Boggle">
-      <Button color="primary" variant="contained">
-        Start
-      </Button>
-    </Link>
+    <div className={classes.container}>
+      <div className={classes.center}>
+        <Button color="primary" variant="contained" onClick={startBoggle}>
+          Start
+        </Button>
+      </div>
+    </div>
   );
 }
 

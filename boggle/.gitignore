@@ -22,4 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-Grid.js
+firebase.js
+./firebase
+/.firebaserc
+/.firebase.json

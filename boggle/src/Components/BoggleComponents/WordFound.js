@@ -1,13 +1,26 @@
 import { Grid, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PaperWord from "./PaperWord";
 
 function WordFound(props) {
+  const [showWords, setShowWords] = useState(false);
+
+  useEffect(() => {
+    if (props.wordsRemaining.length !== 0) {
+      setShowWords(true);
+    }
+  }, [props.wordsRemaining]);
   return (
     <div>
       <Grid container justify="center" alignItems="center">
         <Grid item xs={12} sm={8}>
-          <Typography variant="h5">Words Found</Typography>
+          <Typography variant="h5">
+            Words Found:
+            {showWords &&
+              `  ${props.wordsFound.length}/${
+                props.wordsRemaining.length + props.wordsFound.length
+              }`}
+          </Typography>
         </Grid>
         <Grid item xs={12} sm={8}>
           <Grid container>

@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from "react";
-import findAllSolutions from "./BoggleComponents/boggle_solver";
 import RandomGrid from "./BoggleComponents/RandomGrid";
 import WordFound from "./BoggleComponents/WordFound";
 import { Snackbar } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import Boggle from "./BoggleComponents/Boggle";
+import findAllSolutions from "./BoggleComponents/boggle_solver";
 
 const tiles = RandomGrid(6);
 const dictionary = require("./BoggleComponents/full-wordlist.json");
@@ -78,4 +78,4 @@ function BoggleApp() {
   );
 }
 
-export default BoggleApp;
+export default React.memo(BoggleApp);
